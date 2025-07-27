@@ -35,7 +35,7 @@ export async function fetchEvents(params = {}) {
   
   // 本番環境ではRailwayのURLを使用、開発環境ではプロキシを使用
   const apiUrl = process.env.NODE_ENV === 'production' 
-    ? 'https://my-event-app.railway.internal/api/events'
+    ? 'https://my-event-app-production.up.railway.app/api/events'
     : '/api/events';
   
   const res = await fetch(`${apiUrl}?${queryParams}`);

@@ -1,5 +1,6 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
+
 const puppeteer = require('puppeteer');
 
 const app = express();
@@ -19,7 +20,6 @@ const AREA_URL_MAP = {
   "九州": "ar1000"
 };
 
-app.use(cors());
 
 app.use(cors({
   origin: 'https://hriiii18.github.io'

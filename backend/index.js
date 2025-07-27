@@ -21,6 +21,10 @@ const AREA_URL_MAP = {
 
 app.use(cors());
 
+app.use(cors({
+  origin: 'https://hriiii18.github.io'
+}));
+
 app.get('/api/events', async(req, res) => {
   const { area, year, month, genre, pages = 1 } = req.query;
   console.log('受信クエリ:', area, genre, year, month, 'ページ数:', pages);

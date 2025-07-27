@@ -96,7 +96,6 @@ app.get('/api/events', async(req, res) => {
     await browser.close();
     console.log(`合計 ${allEvents.length}件のイベントを返却`);
     res.json(allEvents);
-    process.exit(1); // サーバーを中止するためのプログラム
   } catch (error) {
     console.error('スクレイピングエラー:', error);
     res.status(500).json({ error: 'イベント取得に失敗しました' });

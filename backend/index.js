@@ -19,9 +19,7 @@ const AREA_URL_MAP = {
   "九州": "ar1000"
 };
 
-app.use(cors({
-  origin: 'https://hariiii18.github.io',
-}));
+app.use(cors());
 
 app.get('/api/events', async(req, res) => {
   const { area, year, month, genre, pages = 1 } = req.query;

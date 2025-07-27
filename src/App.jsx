@@ -5,7 +5,7 @@ import EventResults from './pages/EventResults';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename={process.env.NODE_ENV === 'production' ? '/my-event-app' : ''}>
       <div className='App'>
         <Routes>
           <Route path="/" element={<HomeSearch />} />

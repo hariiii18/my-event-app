@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/my-event-app/',
+  base: process.env.NODE_ENV === 'production' ? '/my-event-app/' : '/',
   server: {
     proxy: {
       '/api': {
@@ -16,5 +16,13 @@ export default defineConfig({
   },
   build: {
     outDir: 'build',
+    rollupOptions: {
+      input: {
+        main: 'index.html'
+      }
+    }
+  },
+  define: {
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
   }
 }) 

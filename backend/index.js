@@ -22,7 +22,7 @@ const AREA_URL_MAP = {
 
 
 app.use(cors({
-  origin: '*'
+  origin: 'https://hariiii18.github.io/my-event-app/'
 }));
 
 app.get('/api/events', async(req, res) => {

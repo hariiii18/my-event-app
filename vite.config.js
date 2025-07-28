@@ -7,11 +7,11 @@ export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/my-event-app/' : '/',
   server: {
     proxy: {
-      '/api': {
-        target: 'http://localhost:5050',
-        changeOrigin: true,
-        secure: false,
-      }
+      // '/api': {
+      //   target: 'http://localhost:5050',
+      //   changeOrigin: true,
+      //   secure: false,
+      // }
     }
   },
   build: {

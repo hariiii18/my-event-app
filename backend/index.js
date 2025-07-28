@@ -22,7 +22,7 @@ const AREA_URL_MAP = {
 
 
 app.use(cors({
-  origin: 'https://hriiii18.github.io'
+  origin: '*'
 }));
 
 app.get('/api/events', async(req, res) => {
@@ -30,7 +30,7 @@ app.get('/api/events', async(req, res) => {
   console.log('受信クエリ:', area, genre, year, month, 'ページ数:', pages);
 
   try {
-    const browser = await puppeteer.launch({ headless: true, protocolTimeout: 120000 });
+    const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], protocolTimeout: 120000 });
     const page = await browser.newPage();
     let allEvents = [];
 

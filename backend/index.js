@@ -20,10 +20,18 @@ const AREA_URL_MAP = {
   "九州": "ar1000"
 };
 
+const allowedOrigins = ['https://harii118.github.io', 'http://localhost:5173'];
 
 app.use(cors({
-  origin: '*'
+  origin: function(origin, callback) {
+    if(!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
+
 
 app.get('/api/events', async(req, res) => {
   const { area, year, month, genre, pages = 1 } = req.query;

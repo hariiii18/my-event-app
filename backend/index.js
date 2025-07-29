@@ -20,7 +20,7 @@ const AREA_URL_MAP = {
   "九州": "ar1000"
 };
 
-const allowedOrigins = ['https://harii118.github.io', 'http://localhost:5173'];
+const allowedOrigins = ['https://harii118.github.io/my-event-app/', 'http://localhost:5173'];
 
 app.use(cors({
   origin: function(origin, callback) {

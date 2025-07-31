@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 
 const puppeteer = require('puppeteer');
-
 const app = express();
 const PORT = 5050;
 
@@ -20,17 +19,9 @@ const AREA_URL_MAP = {
   "九州": "ar1000"
 };
 
-const allowedOrigins = ['https://hariiii18.github.io', 'http://localhost:5173'];
 
 app.use(cors({
-  origin: function(origin, callback) {
-    console.log("リクエスト元のOrigin:", origin);
-    if(!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
+  origin: 'https://hariiii18.github.io'
 }));
 
 
@@ -39,7 +30,7 @@ app.get('/api/events', async(req, res) => {
   console.log('受信クエリ:', area, genre, year, month, 'ページ数:', pages);
 
   try {
-    const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'], protocolTimeout: 120000 });
+    const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
     let allEvents = [];
 

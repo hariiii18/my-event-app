@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import puppeteer from 'puppeteer';
 
-const puppeteer = require('puppeteer');
 const app = express();
 const PORT = 5050;
 
@@ -20,9 +20,20 @@ const AREA_URL_MAP = {
 };
 
 
+const allowedOrigins = [
+  'https://hariiii18.github.io',    // GitHub Pages
+  'http://localhost:5173',          // Vite 開発サーバー
+]
+
 app.use(cors({
-  origin: 'https://hariiii18.github.io'
-}));
+  origin(origin, cb) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      cb(null, true)
+    } else {
+      cb(new Error('Not allowed by CORS: ' + origin))
+    }
+  }
+}))
 
 
 app.get('/api/events', async(req, res) => {

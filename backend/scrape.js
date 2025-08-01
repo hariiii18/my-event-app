@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+import puppeteer from 'puppeteer';
 
 const AREA_PREFS = {
   "北海道": ["北海道"],

@@ -91,7 +91,7 @@ app.get('/api/events', async(req, res) => {
     for (let i = 0; i < allEvents.length; i++) {
       const event = allEvents[i];
       try {
-        const detailUrl = event.url + 'data.html';
+        const detailUrl = event.url.replace(/\.html$/, '/data.html');
         await page.goto(detailUrl, { waitUntil: 'domcontentloaded', timeout: 10000});
 
         const officialUrl = await page.evaluate(() => {
